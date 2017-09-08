@@ -222,7 +222,7 @@ From [Oauth JSON Web Token 4.1.4. "exp" (Expiration Time) Claim](https://tools.i
 **Handle Expiration Claim**
 
 ```ruby
-exp = Time.now.to_i + 4 * 3600
+exp = Time.now.to_i - 4 * 3600
 exp_payload = { :data => 'data', :exp => exp }
 
 token = JWT.encode exp_payload, hmac_secret, 'HS256'
@@ -262,7 +262,7 @@ From [Oauth JSON Web Token 4.1.5. "nbf" (Not Before) Claim](https://tools.ietf.o
 **Handle Not Before Claim**
 
 ```ruby
-nbf = Time.now.to_i - 3600
+nbf = Time.now.to_i + 3600
 nbf_payload = { :data => 'data', :nbf => nbf }
 
 token = JWT.encode nbf_payload, hmac_secret, 'HS256'
